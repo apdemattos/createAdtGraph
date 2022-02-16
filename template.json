@@ -1,0 +1,245 @@
+{
+  "digitalTwinsFileInfo": { "fileVersion": "1.0.0" },
+  "digitalTwinsGraph": {
+    "digitalTwins": [
+      {
+        "$dtId": "dunbarHS",
+        "name": "Dunbar HS",
+        "address": { "$metadata": {} },
+        "area": { "$metadata": {} },
+        "capacity": { "$metadata": {} },
+        "occupancy": { "$metadata": {} },
+        "temperature": { "$metadata": {} },
+        "humidity": { "$metadata": {} },
+        "CO2": { "$metadata": {} },
+        "$metadata": { "$model": "dtmi:digitaltwins:rec_3_3:core:Building;1" }
+      },
+      {
+        "$dtId": "basement",
+        "name": "Basement Floor",
+        "levelNumber": 0,
+        "area": { "$metadata": {} },
+        "capacity": { "$metadata": {} },
+        "occupancy": { "$metadata": {} },
+        "temperature": { "$metadata": {} },
+        "humidity": { "$metadata": {} },
+        "CO2": { "$metadata": {} },
+        "$metadata": {
+          "$model": "dtmi:digitaltwins:rec_3_3:building:BasementLevel;1"
+        }
+      },
+      {
+        "$dtId": "firstFloor",
+        "name": "First Floor",
+        "levelNumber": 0,
+        "area": { "$metadata": {} },
+        "capacity": { "$metadata": {} },
+        "occupancy": { "$metadata": {} },
+        "temperature": { "$metadata": {} },
+        "humidity": { "$metadata": {} },
+        "CO2": { "$metadata": {} },
+        "$metadata": {
+          "$model": "dtmi:digitaltwins:rec_3_3:core:Level;1"
+        }
+      },
+      {
+        "$dtId": "9d8b5ed1-9441-4c04-9186-c98cb3dbfd4c-0035cf4e",
+        "name": "MEP 0359",
+        "externalIds": {
+          "revitGuid": "9d8b5ed1-9441-4c04-9186-c98cb3dbfd4c-0035cf4e"
+        },
+        "area": { "$metadata": {} },
+        "capacity": { "$metadata": {} },
+        "occupancy": { "$metadata": {} },
+        "temperature": { "$metadata": {} },
+        "humidity": { "$metadata": {} },
+        "CO2": { "$metadata": {} },
+        "$metadata": { "$model": "dtmi:digitaltwins:rec_3_3:core:Room;1" }
+      },
+      {
+        "$dtId": "536434dd-7374-4e45-a02a-bbbfadaa2abb-00207be4",
+        "name": "AHU-1",
+        "airflowModulation": "ConstantVolume",
+        "ventilationConfiguration": "None",
+        "ventilationStrategy": "Economizing",
+        "zoneDelivery": "VAVZone",
+        "supplyFan": { "$metadata": {} },
+        "secondaryCoolingMethod": { "$metadata": {} },
+        "returnFan": { "$metadata": {} },
+        "reHeatingMethod": { "$metadata": {} },
+        "primaryCoolingMethod": {
+          "type": "DX",
+          "$metadata": {
+            "type": { "lastUpdateTime": "2022-02-09T16:11:18.1659189Z" }
+          }
+        },
+        "preHeatingMethod": { "$metadata": {} },
+        "mixingBox": { "$metadata": {} },
+        "exhaustFan": {
+          "driveType": "Direct",
+          "$metadata": {
+            "driveType": { "lastUpdateTime": "2022-02-09T16:11:18.1659189Z" }
+          }
+        },
+        "externalIds": {
+          "revitGuid": "536434dd-7374-4e45-a02a-bbbfadaa2abb-00207be4"
+        },
+        "$metadata": {
+          "$model": "dtmi:digitaltwins:rec_3_3:asset:AirHandlingUnit;1"
+        }
+      },
+      {
+        "$dtId": "a50df7c6-b1f2-4f1d-a31d-feb543aa35ce-001faad5",
+        "name": "Cafetiera 1214",
+        "area": { "$metadata": {} },
+        "capacity": { "$metadata": {} },
+        "occupancy": { "$metadata": {} },
+        "temperature": { "$metadata": {} },
+        "humidity": { "$metadata": {} },
+        "CO2": { "$metadata": {} },
+        "externalIds": {
+          "revitGuid": "a50df7c6-b1f2-4f1d-a31d-feb543aa35ce-001faad5"
+        },
+        "$metadata": {
+          "$model": "dtmi:digitaltwins:rec_3_3:building:CafeteriaRoom;1"
+        }
+      },
+      {
+        "$dtId": "f7b2f8f8-7a19-42bc-94dc-d72d4c019488-0013f6f4",
+        "name": "Serving Area 1320",
+        "externalIds": {
+          "revitGuid": "f7b2f8f8-7a19-42bc-94dc-d72d4c019488-0013f6f4"
+        },
+        "area": { "$metadata": {} },
+        "capacity": { "$metadata": {} },
+        "occupancy": { "$metadata": {} },
+        "temperature": { "$metadata": {} },
+        "humidity": { "$metadata": {} },
+        "CO2": { "$metadata": {} },
+        "$metadata": {
+          "$model": "dtmi:digitaltwins:rec_3_3:building:CafeteriaRoom;1"
+        }
+      },
+      {
+        "$dtId": "5aeb5df9-9871-47a9-aa62-3f277178a828-001092c3",
+        "name": "RHVAV-A1-04 Cafeteria 1214 N",
+        "expectedEndOfLife": "2022-03-03",
+        "initialCost": "12000",
+        "minAirflowRating": 11,
+        "reHeatingMethod": {
+          "expectedReplacementCost": "123213123",
+          "type": "Gas",
+          "$metadata": {
+            "expectedReplacementCost": {
+              "lastUpdateTime": "2022-02-09T16:26:19.7737004Z"
+            },
+            "type": { "lastUpdateTime": "2022-02-09T16:26:19.7737004Z" }
+          }
+        },
+        "ductInlet": {
+          "commissionDate": "2022-02-02",
+          "configuration": "single",
+          "shape": "round",
+          "$metadata": {
+            "commissionDate": {
+              "lastUpdateTime": "2022-02-09T16:26:19.7737004Z"
+            },
+            "configuration": {
+              "lastUpdateTime": "2022-02-09T16:26:19.7737004Z"
+            },
+            "shape": { "lastUpdateTime": "2022-02-09T16:26:19.7737004Z" }
+          }
+        },
+        "$metadata": {
+          "$model": "dtmi:digitaltwins:rec_3_3:asset:VAVBoxReheat;1"
+        }
+      },
+      {
+        "$dtId": "setty-dcdgs_dunbar_hs301-1-3001-analogValue-16",
+        "lastValue": 72,
+        "name": "Temperature",
+        "categorizationProperties": { "$metadata": {} },
+        "$metadata": {
+          "$model": "dtmi:digitaltwins:rec_3_3:device:TemperatureSensor;1"
+        }
+      },
+      {
+        "$dtId": "setty-dcdgs_dunbar_hs-301-1-3001-analogValue-17",
+        "lastValue": 0,
+        "name": "Cooling Valve Position",
+        "categorizationProperties": { "$metadata": {} },
+        "$metadata": {
+          "$model": "dtmi:digitaltwins:rec_3_3:device:ValvePositionActuator;1"
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "$relationshipId": "basement->isPartOf->dunbarHS",
+        "$sourceId": "basement",
+        "$targetId": "dunbarHS",
+        "$relationshipName": "isPartOf"
+      },
+      {
+        "$relationshipId": "9d8b5ed1-9441-4c04-9186-c98cb3dbfd4c-0035cf4e->isPartOf->basement",
+        "$sourceId": "9d8b5ed1-9441-4c04-9186-c98cb3dbfd4c-0035cf4e",
+        "$targetId": "basement",
+        "$relationshipName": "isPartOf"
+      },
+      {
+        "$relationshipId": "536434dd-7374-4e45-a02a-bbbfadaa2abb-00207be4->locatedIn->9d8b5ed1-9441-4c04-9186-c98cb3dbfd4c-0035cf4e",
+        "$sourceId": "536434dd-7374-4e45-a02a-bbbfadaa2abb-00207be4",
+        "$targetId": "9d8b5ed1-9441-4c04-9186-c98cb3dbfd4c-0035cf4e",
+        "$relationshipName": "locatedIn"
+      },
+      {
+        "$relationshipId": "a50df7c6-b1f2-4f1d-a31d-feb543aa35ce-001faad5->isPartOf->firstFloor",
+        "$sourceId": "a50df7c6-b1f2-4f1d-a31d-feb543aa35ce-001faad5",
+        "$targetId": "firstFloor",
+        "$relationshipName": "isPartOf"
+      },
+      {
+        "$relationshipId": "f7b2f8f8-7a19-42bc-94dc-d72d4c019488-0013f6f4->isPartOf->firstFloor",
+        "$sourceId": "f7b2f8f8-7a19-42bc-94dc-d72d4c019488-0013f6f4",
+        "$targetId": "firstFloor",
+        "$relationshipName": "isPartOf"
+      },
+      {
+        "$relationshipId": "firstFloor->isPartOf->dunbarHS",
+        "$sourceId": "firstFloor",
+        "$targetId": "dunbarHS",
+        "$relationshipName": "isPartOf"
+      },
+      {
+        "$relationshipId": "5aeb5df9-9871-47a9-aa62-3f277178a828-001092c3->locatedIn->f7b2f8f8-7a19-42bc-94dc-d72d4c019488-0013f6f4",
+        "$sourceId": "5aeb5df9-9871-47a9-aa62-3f277178a828-001092c3",
+        "$targetId": "f7b2f8f8-7a19-42bc-94dc-d72d4c019488-0013f6f4",
+        "$relationshipName": "locatedIn"
+      },
+      {
+        "$relationshipId": "5aeb5df9-9871-47a9-aa62-3f277178a828-001092c3->locatedIn->a50df7c6-b1f2-4f1d-a31d-feb543aa35ce-001faad5",
+        "$sourceId": "5aeb5df9-9871-47a9-aa62-3f277178a828-001092c3",
+        "$targetId": "a50df7c6-b1f2-4f1d-a31d-feb543aa35ce-001faad5",
+        "$relationshipName": "serves"
+      },
+      {
+        "$relationshipId": "536434dd-7374-4e45-a02a-bbbfadaa2abb-00207be4->feeds->5aeb5df9-9871-47a9-aa62-3f277178a828-001092c3",
+        "$sourceId": "536434dd-7374-4e45-a02a-bbbfadaa2abb-00207be4",
+        "$targetId": "5aeb5df9-9871-47a9-aa62-3f277178a828-001092c3",
+        "$relationshipName": "feeds"
+      },
+      {
+        "$relationshipId": "5aeb5df9-9871-47a9-aa62-3f277178a828-001092c3->hasCapability->setty-dcdgs_dunbar_hs-301-1-3001-analogValue-17",
+        "$sourceId": "5aeb5df9-9871-47a9-aa62-3f277178a828-001092c3",
+        "$targetId": "setty-dcdgs_dunbar_hs-301-1-3001-analogValue-17",
+        "$relationshipName": "hasCapability"
+      },
+      {
+        "$relationshipId": "5aeb5df9-9871-47a9-aa62-3f277178a828-001092c3->hasCapability->setty-dcdgs_dunbar_hs301-1-3001-analogValue-16",
+        "$sourceId": "5aeb5df9-9871-47a9-aa62-3f277178a828-001092c3",
+        "$targetId": "setty-dcdgs_dunbar_hs301-1-3001-analogValue-16",
+        "$relationshipName": "hasCapability"
+      }
+    ]
+  }
+}

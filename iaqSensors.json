@@ -1,0 +1,169 @@
+{
+  "digitalTwinsFileInfo": { "fileVersion": "1.0.0" },
+  "digitalTwinsGraph": {
+    "digitalTwins": [
+      {
+        "$dtId": "iaq713153Dunbar",
+        "name": "IAQ Sensor 713153",
+        "ExtIdentifier": "c0c5fd23-845d-4584-aa32-cb3cc09e8da6-0019df37",
+        "$metadata": { "$model": "dtmi:com:syyclops:Component;1" }
+      },
+      {
+        "$dtId": "iaq713153Humidity",
+        "Name": "Humidity",
+        "lastValue": 0,
+        "unit": "%",
+        "Subscription_id": "827517-1301",
+        "$metadata": { "$model": "dtmi:com:syyclops:AnalogInput;1" }
+      },
+      {
+        "$dtId": "iaq713153Temperature",
+        "Name": "Temperature",
+        "lastValue": 0,
+        "unit": "℉",
+        "Subscription_id": "827516-1301",
+        "$metadata": { "$model": "dtmi:com:syyclops:AnalogInput;1" }
+      },
+      {
+        "$dtId": "iaq713153pm25",
+        "Name": "PM 2.5",
+        "lastValue": 0,
+        "unit": "µg/m3",
+        "Subscription_id": "827522-1301",
+        "$metadata": { "$model": "dtmi:com:syyclops:AnalogInput;1" }
+      },
+      {
+        "$dtId": "iaq713153CO2",
+        "Name": "Carbon Dioxide",
+        "lastValue": 0,
+        "unit": "ppm",
+        "Subscription_id": "827518-1301",
+        "$metadata": { "$model": "dtmi:com:syyclops:AnalogInput;1" }
+      },
+      {
+        "$dtId": "iaq725680Dunbar",
+        "name": "IAQ Sensor 725680",
+        "ExtIdentifier": "bb36f317-91be-4b2d-9f3a-2ea76fdf60f2-0004d05e",
+        "$metadata": { "$model": "dtmi:com:syyclops:Component;1" }
+      },
+      {
+        "$dtId": "iaq725680Humidity",
+        "Name": "Humidity",
+        "lastValue": 0,
+        "unit": "%",
+        "Subscription_id": "827559-1303",
+        "$metadata": { "$model": "dtmi:com:syyclops:AnalogInput;1" }
+      },
+      {
+        "$dtId": "iaq725680Temperature",
+        "Name": "Temperature",
+        "lastValue": 0,
+        "unit": "℉",
+        "Subscription_id": "827558-1303",
+        "$metadata": { "$model": "dtmi:com:syyclops:AnalogInput;1" }
+      },
+      {
+        "$dtId": "iaq725680pm25",
+        "Name": "PM 2.5",
+        "lastValue": 0,
+        "unit": "µg/m3",
+        "Subscription_id": "827564-1303",
+        "$metadata": { "$model": "dtmi:com:syyclops:AnalogInput;1" }
+      },
+      {
+        "$dtId": "iaq725680CO2",
+        "Name": "Carbon Dioxide",
+        "lastValue": 0,
+        "unit": "ppm",
+        "Subscription_id": "827560-1303",
+        "$metadata": { "$model": "dtmi:com:syyclops:AnalogInput;1" }
+      }
+    ],
+    "relationships": [
+      {
+        "$relationshipId": "iaq713153Dunbar->isLocatedIn->classroom2135Dunbar",
+        "$sourceId": "iaq713153Dunbar",
+        "$targetId": "classroom2135Dunbar",
+        "$relationshipName": "isLocatedIn"
+      },
+      {
+        "$relationshipId": "iaq713153Dunbar->isOfType->sensewareIAQ",
+        "$sourceId": "iaq713153Dunbar",
+        "$targetId": "sensewareIAQ",
+        "$relationshipName": "isOfType"
+      },
+      {
+        "$relationshipId": "iaq713153Dunbar->isPartOf->sensewareIaqSystem",
+        "$sourceId": "iaq713153Dunbar",
+        "$targetId": "sensewareIaqSystem",
+        "$relationshipName": "isPartOf"
+      },
+      {
+        "$relationshipId": "iaq713153Humidity->isSensorOf->iaq713153Dunbar",
+        "$sourceId": "iaq713153Humidity",
+        "$targetId": "iaq713153Dunbar",
+        "$relationshipName": "isSensorOf"
+      },
+      {
+        "$relationshipId": "iaq713153Temperature->isSensorOf->iaq713153Dunbar",
+        "$sourceId": "iaq713153Temperature",
+        "$targetId": "iaq713153Dunbar",
+        "$relationshipName": "isSensorOf"
+      },
+      {
+        "$relationshipId": "iaq713153pm25->isSensorOf->iaq713153Dunbar",
+        "$sourceId": "iaq713153pm25",
+        "$targetId": "iaq713153Dunbar",
+        "$relationshipName": "isSensorOf"
+      },
+      {
+        "$relationshipId": "iaq713153CO2->isSensorOf->iaq713153Dunbar",
+        "$sourceId": "iaq713153CO2",
+        "$targetId": "iaq713153Dunbar",
+        "$relationshipName": "isSensorOf"
+      },
+      {
+        "$relationshipId": "iaq725680Dunbar->isLocatedIn->preEngineeringLab2175Dunbar",
+        "$sourceId": "iaq725680Dunbar",
+        "$targetId": "preEngineeringLab2175Dunbar",
+        "$relationshipName": "isLocatedIn"
+      },
+      {
+        "$relationshipId": "iaq725680Dunbar->isOfType->sensewareIAQ",
+        "$sourceId": "iaq725680Dunbar",
+        "$targetId": "sensewareIAQ",
+        "$relationshipName": "isOfType"
+      },
+      {
+        "$relationshipId": "iaq725680Dunbar->isPartOf->sensewareIaqSystem",
+        "$sourceId": "iaq725680Dunbar",
+        "$targetId": "sensewareIaqSystem",
+        "$relationshipName": "isPartOf"
+      },
+      {
+        "$relationshipId": "iaq725680Humidity->isSensorOf->iaq725680Dunbar",
+        "$sourceId": "iaq725680Humidity",
+        "$targetId": "iaq725680Dunbar",
+        "$relationshipName": "isSensorOf"
+      },
+      {
+        "$relationshipId": "iaq725680Temperature->isSensorOf->iaq725680Dunbar",
+        "$sourceId": "iaq725680Temperature",
+        "$targetId": "iaq725680Dunbar",
+        "$relationshipName": "isSensorOf"
+      },
+      {
+        "$relationshipId": "iaq725680pm25->isSensorOf->iaq725680Dunbar",
+        "$sourceId": "iaq725680pm25",
+        "$targetId": "iaq725680Dunbar",
+        "$relationshipName": "isSensorOf"
+      },
+      {
+        "$relationshipId": "iaq725680CO2->isSensorOf->iaq725680Dunbar",
+        "$sourceId": "iaq725680CO2",
+        "$targetId": "iaq725680Dunbar",
+        "$relationshipName": "isSensorOf"
+      }
+    ]
+  }
+}

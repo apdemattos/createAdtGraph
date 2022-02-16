@@ -1,6 +1,5 @@
 import json
 import sys
-from tkinter import N
 import xlsxwriter
 
 # Model Tree Higharchy
@@ -20,13 +19,60 @@ floorAndRooms = open('./Revit_Rooms_Dunbar.json')
 floorAndRoomsData = json.load(floorAndRooms)
 
 # ADT Model IDs
-facilityModelId = 'dtmi:com:syyclops:Facility;1'
-floorModelId = 'dtmi:com:syyclops:Floor;1'
-spaceModelId = 'dtmi:com:syyclops:Space;1'
+facilityModelId = 'dtmi:com:willowinc:Building;1'
+floorModelId = 'dtmi:com:willowinc:Floor;1'
+spaceModelId = 'dtmi:com:willowinc:Room;1'
 mechanicalEquipmentModelId = 'dtmi:com:syyclops:MechanicalEquipment;1'
-ductModelId = 'dtmi:com:syyclops:Duct;1'
-systemModelId = 'dtmi:com:syyclops:System;1'
-typeModelId = 'dtmi:com:syyclops:Type;1'
+systemModelId = 'dtmi:com:willowinc:System;1'
+
+# Map Revit Families to their corresponding DTDL Model
+revitFamiliesToDtDlModel = {
+    'Rectangular Duct': 'dtmi:com:willowinc:HVACRectangularDuct;1', 
+    'Round Duct': 'dtmi:com:willowinc:HVACRoundDuct;1',
+    'Pipe Types': 'dtmi:com:willowinc:Pipe;1',
+    'Transition - Generic': 'dtmi:com:willowinc:PipeFitting;1',
+    'Elbow - Generic': 'dtmi:com:willowinc:PipeFittingElbow;1',
+    'Tee - Generic': 'dtmi:com:willowinc:PipeFittingTee;1',
+    'Pipe Spud': 'dtmi:com:willowinc:PipeFitting;1',
+    'Coupling - Generic': 'dtmi:com:willowinc:PipeFittingCoupling;1',
+    'Climate Master - TS Series': 'dtmi:com:willowinc:AirHandlingUnit;1',
+    'Krueger LMHS-HWC': 'dtmi:com:willowinc:VAVBoxReheat;1',
+    'Krueger LMHS': 'dtmi:com:willowinc:VAVBox;1',
+    'Cabinet Fan-BCF': 'dtmi:com:willowinc:HVACFan;1',
+    'Unit Heater - Cabinet': 'dtmi:com:willowinc:UnitHeater;1',
+    'Pool Unit': 'dtmi:com:willowinc:AirHandlingUnit;1',
+    'AHU 1,3,7': 'dtmi:com:willowinc:AirHandlingUnit;1',
+    'AHU': 'dtmi:com:willowinc:AirHandlingUnit;1',
+    'BG Base Mounted Centrifugal Pump Series 1510-5': 'dtmi:com:willowinc:HVACPump;1',
+    'Expansion Tank - Freestanding - Vertical': 'dtmi:com:willowinc:HVACTank;1',
+    'BAC - Cooling Tower': 'dtmi:com:willowinc:CoolingTower;1',
+    'Greenheck Sidewall Exhaust': 'dtmi:com:willowinc:ExhaustFan;1',
+    'DOAS 1,2,8': 'dtmi:com:willowinc:DedicatedOutdoorAirSystem;1',
+    'DOAS': 'dtmi:com:willowinc:DedicatedOutdoorAirSystem;1',
+    'AHU 2,5': 'dtmi:com:willowinc:AirHandlingUnit;1',
+    'Greenheck Rooftop Ventilator': 'dtmi:com:willowinc:ExhaustFan;1',
+    'CaptiveAire Rooftop Ventilator': 'dtmi:com:willowinc:ExhaustFan;1',
+    'RooftopVentilator 10,25': 'dtmi:com:willowinc:ExhaustFan;1',
+    'RooftopVentilator': 'dtmi:com:willowinc:ExhaustFan;1',
+    'MAU': 'dtmi:com:willowinc:MakeupAirUnit;1',
+    'Horizontal FCU': 'dtmi:com:willowinc:FanCoilUnit;1',
+    'Unit Heater': 'dtmi:com:willowinc:UnitHeater;1',
+    'Refrigeration Unit': 'dtmi:com:willowinc:RefrigerationEquipment;1',
+    'FCU Stair': 'dtmi:com:willowinc:FanCoilUnit;1',
+    'Cabinet Fan-BDF': 'dtmi:com:willowinc:ReturnFan;1',
+    'InlineTubeFan-Horiz': 'dtmi:com:willowinc:ReturnFan;1',
+    'Chiller': 'dtmi:com:willowinc:Chiller;1',
+    'Heat Exchanger': 'dtmi:com:willowinc:HeatExchanger;1',
+    'WWHP': 'dtmi:com:willowinc:HVACPump;1',
+    'FCU IT': 'dtmi:com:willowinc:FanCoilUnit;1',
+    'BG Base Mounted Centrifugal Pump Series 1510-4': 'dtmi:com:willowinc:HVACPump;1',
+    'Bio Tank': 'dtmi:com:willowinc:HVACTank;1',
+    'BG_In-Line Mounted Pump_Series 80-1.5x1.5xX': 'dtmi:com:willowinc:HVACTank;1',
+    'CeilingFan': 'dtmi:com:willowinc:CeilingFan;1',
+    'BAS Panel': 'dtmi:com:willowinc:AccessControlPanel;1',
+    'Bypass Feeder': 'dtmi:com:willowinc:Asset;1',
+    'ACC': 'dtmi:com:willowinc:Asset;1'
+}
 
 componentsLocation = {}
 
@@ -35,8 +81,10 @@ adtGraph = { "digitalTwinsFileInfo": { "fileVersion": "1.0.0" },
 
 def createTypeComponentAndSystem():
     for Category in instanceTreeData['children']:
-        if(Category['name'] == 'Mechanical Equipment'):
+        if(Category['name'] == 'Mechanical Equipment' or Category['name'] == 'Ducts'):
             for Family in Category['children']: 
+                # print(Family['name'])
+                revitFamilyToDTDLModel = revitFamiliesToDtDlModel[Family['name']]                
                 for Type in Family['children']:
                     for Component in Type['children']:
 
@@ -63,23 +111,24 @@ def createTypeComponentAndSystem():
                         # print(componentsLocation)
                         
 
-                        type = Component['name']
+                        # type = Component['name']
                         # name = prop[0]['properties']['Identity Data']['Type Name']
-                        systems = prop[0]['properties']['Mechanical']['System Name'].split(",")
 
 
                         # Type
-                        typeId = Family['name'].replace(" ", "")
-                        typeName = Family['name']
+                        # typeId = Family['name'].replace(" ", "")
+                        # typeName = Family['name']
 
-                        adtGraph['digitalTwinsGraph']['digitalTwins'].append({"$dtId": typeId, "name": typeName, "$metadata": {"$model": typeModelId}})
+                        # adtGraph['digitalTwinsGraph']['digitalTwins'].append({"$dtId": typeId, "name": typeName, "$metadata": {"$model": typeModelId}})
 
 
                         # Component
                         componentDtId = Component['name'].replace(" ", "").replace("[", "-").replace("]", "").replace("/", "-")
 
-                        adtGraph['digitalTwinsGraph']['digitalTwins'].append({"$dtId": componentDtId, "name": prop[0]['properties']['Identity Data']['Type Name'] if 'Type Name' in prop[0]['properties']['Identity Data'] else "TBD", "ExtIdentifier": Component['externalId'], "$metadata": {"$model": mechanicalEquipmentModelId}})
+                        adtGraph['digitalTwinsGraph']['digitalTwins'].append({"$dtId": componentDtId, "name": prop[0]['properties']['Identity Data']['Type Name'] if 'Type Name' in prop[0]['properties']['Identity Data'] else "TBD", "geometryViewerID": Component['externalId'], "$metadata": {"$model": revitFamilyToDTDLModel}})
 
+                        # Systems
+                        systems = prop[0]['properties']['Mechanical']['System Name'].split(",")
 
                         for system in systems:
                             if(system != ""):
@@ -90,10 +139,6 @@ def createTypeComponentAndSystem():
 
                                 # Component Is Part Of System
                                 adtGraph['digitalTwinsGraph']['relationships'].append({"$relationshipId": "{}->isPartOf->{}".format(componentDtId, systemId), "$sourceId": componentDtId, "$targetId": systemId, "$relationshipName": "isPartOf"})
-
-
-                        # Component Is Of Type
-                        adtGraph['digitalTwinsGraph']['relationships'].append({"$relationshipId": "{}->isPartOf->{}".format(componentDtId, typeId), "$sourceId": componentDtId, "$targetId": typeId, "$relationshipName": "isOfType"})
         
 
 def createFloorsAndRooms(facilityDtId):
@@ -110,11 +155,10 @@ def createFloorsAndRooms(facilityDtId):
         for room in floorAndRoomsData[floor]:
             roomId = room["_name"].replace(" ", "").replace("[", "-").replace("]", "").replace('/', "-").replace('&', "-").replace("'", "")
             # Create Room
-            adtGraph['digitalTwinsGraph']['digitalTwins'].append({"$dtId": roomId, "name": room["_name"].replace("'", "").split("[")[0], "ExtIdentifier": room['_info']["externalId"], "$metadata": {"$model": spaceModelId}})
+            adtGraph['digitalTwinsGraph']['digitalTwins'].append({"$dtId": roomId, "name": room["_name"].replace("'", "").split("[")[0], "geometryViewerID": room['_info']["externalId"], "$metadata": {"$model": spaceModelId}})
 
             # Room is part of floor
             adtGraph['digitalTwinsGraph']['relationships'].append({"$relationshipId": "{}->isPartOf->{}".format(roomId, floorId), "$sourceId": roomId, "$targetId": floorId, "$relationshipName": "isPartOf"})
-
 
     createTypeComponentAndSystem()
             
@@ -126,7 +170,7 @@ def main():
     adtGraph['digitalTwinsGraph']['digitalTwins'].append({"$dtId": facilityDtId, "name": facilityDtId, "$metadata": {"$model": facilityModelId}})
 
     createFloorsAndRooms(facilityDtId)
-
+    # createTypeComponentAndSystem()
 
     with open("adtGraph.json", "w") as outfile:
         json.dump(adtGraph, outfile)
