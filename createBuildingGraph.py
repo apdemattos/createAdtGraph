@@ -57,7 +57,7 @@ async def loadData():
     plumbInstanceTree = await getModelHigharchy(args.plumbUrn)
     plumbProperties = await getModelProperties(args.plumbUrn)
     # plumbCoords = json.load(open('./Havtech/Plumbing/Havtech_Plumbing_Coordinates.json'))
-    Plumbing = {'Name': 'Plumbing', 'urn': PlumbingUrn,'Instance Tree': plumbInstanceTree, 'Properties': plumbProperties, 'Coords': ''}
+    Plumbing = {'Name': 'Plumbing', 'urn': args.plumbUrn,'Instance Tree': plumbInstanceTree, 'Properties': plumbProperties, 'Coords': ''}
 
     # Electrical 
     elecInstanceTree = await getModelHigharchy(args.elecUrn)
